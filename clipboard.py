@@ -166,8 +166,10 @@ class ClipboardRow(Gtk.FlowBoxChild):
         self.app = app
 
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
-        box.set_margin_top(6); box.set_margin_bottom(6)
-        box.set_margin_start(8); box.set_margin_end(8)
+        box.set_margin_top(6)
+        box.set_margin_bottom(6)
+        box.set_margin_start(8)
+        box.set_margin_end(8)
 
         if self.kind == "text":
             text = self.content.decode("utf-8", "replace")

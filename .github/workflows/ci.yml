@@ -17,10 +17,10 @@ jobs:
       - run: pip install ruff
       - run: ruff check .
 
-  # The GTK/PyGObject runtime is only guaranteed in a desktop image; this
-  # checks that the module at least compiles and imports cleanly on Linux
-  # with the system packages installed, catching syntax/import errors
-  # before a human has to notice them.
+  # Checks that the module imports cleanly against the system PyGObject
+  # packages, catching syntax/import errors before a human has to notice
+  # them. Uses the runner's system Python: `gi` is a C extension bound to
+  # apt's libraries, so a setup-python interpreter cannot see it.
   import-check:
     name: Import check
     runs-on: ubuntu-24.04
@@ -30,8 +30,5 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y python3-gi gir1.2-gtk-3.0 gir1.2-gdkpixbuf-2.0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
       - name: Import clipboard module
-        run: python3 -c "import clipboard; print('import ok')"
+        run: /usr/bin/python3 -c "import clipboard; print('import ok')"
