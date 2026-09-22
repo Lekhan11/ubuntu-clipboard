@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Ubuntu Clipboard History
+Comment=Windows-style clipboard history
+# Placeholder — the install script rewrites this with the real path to your
+# checkout so the autostart entry points at an existing file.
+Exec=/usr/bin/python3 /path/to/ubuntu-clipboard/clipboard.py
+WorkingDirectory=/path/to/ubuntu-clipboard
+Icon=edit-paste
+Terminal=false
+Categories=Utility;
+X-GNOME-Autostart-enabled=true
