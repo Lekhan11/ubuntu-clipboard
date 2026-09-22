@@ -38,3 +38,9 @@ target-version = "py38"
 select = ["E", "F", "W"]
 # Keep line-length off: the module carries long explanatory comments.
 ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+# clipboard.py:22 — gi.require_version() must run before the
+# `from gi.repository` import; that's the standard PyGObject idiom, not an
+# import-order mistake.
+"clipboard.py" = ["E402"]
